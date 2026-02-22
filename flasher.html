@@ -28,7 +28,7 @@
         }
         .step-active { border-color: #38b259; }
         .step-active .step-icon { background-color: #38b259; color: #fff; }
-        .step-inactive { border-color: #374151; opacity: 0.6; }
+        .step-inactive { border-color: #374151; opacity: 0.6; pointer-events: none; }
         .step-inactive .step-icon { background-color: #374151; color: #9ca3af; }
         .step-done { border-color: #38b259; }
         .step-done .step-icon { background-color: #166534; color: #38b259; border: 1px solid #38b259; }
@@ -53,16 +53,7 @@
     <main class="flex-grow container mx-auto px-6 py-12 max-w-4xl">
         <div class="text-center mb-10">
             <h1 class="text-4xl font-extrabold mb-4">Web Flasher</h1>
-            <p class="text-gray-400">Install crDroid directly from your browser using WebUSB.</p>
-            
-            <div class="bg-blue-900/20 border border-blue-900 text-blue-300 p-4 rounded-xl mt-6 text-sm text-left flex gap-3 shadow-lg">
-                <i class="fa-solid fa-circle-info text-xl mt-0.5"></i>
-                <div>
-                    <strong>Important Note about Files:</strong> 
-                    Because the official files are hosted on SourceForge (which blocks direct browser downloads via CORS), 
-                    you must download the <code class="bg-blue-900/50 px-1 rounded">boot.img</code>, <code class="bg-blue-900/50 px-1 rounded">dtbo.img</code>, <code class="bg-blue-900/50 px-1 rounded">vendor_boot.img</code>, and the ROM <code class="bg-blue-900/50 px-1 rounded">.zip</code> to your computer first using the main page. You will select them here to flash.
-                </div>
-            </div>
+            <p class="text-gray-400">Install crDroid directly from your browser. The tool will automatically download and flash the latest release for your device.</p>
         </div>
 
         <!-- Flasher Steps -->
@@ -72,11 +63,22 @@
             <div id="step-1" class="step-active border-2 rounded-2xl p-6 bg-cardbg transition-all">
                 <div class="flex items-center gap-4 mb-4">
                     <div class="step-icon w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg transition-colors">1</div>
-                    <h2 class="text-2xl font-bold">Connect Device</h2>
+                    <h2 class="text-2xl font-bold">Select Device & Connect</h2>
                 </div>
                 <div class="pl-14">
-                    <p class="text-gray-400 mb-4">Enable <strong>USB Debugging</strong> in Developer Options and connect your phone to your PC. Only Chromium-based browsers (Chrome, Edge, Brave) are supported.</p>
-                    <button id="btn-connect" class="bg-crdroid hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
+                    <p class="text-gray-400 mb-4">Select your device model, enable <strong>USB Debugging</strong>, and connect your phone. Only Chromium-based browsers (Chrome, Edge, Brave) are supported.</p>
+                    
+                    <div class="mb-4 max-w-sm">
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Target Device</label>
+                        <select id="device-select" class="bg-gray-800 border border-gray-700 text-white text-sm rounded-lg focus:ring-crdroid focus:border-crdroid block w-full p-3">
+                            <option value="" disabled selected>Select your device...</option>
+                            <option value="bramble">Pixel 4a 5G (bramble)</option>
+                            <option value="redfin">Pixel 5 (redfin)</option>
+                            <option value="barbet">Pixel 5a (barbet)</option>
+                        </select>
+                    </div>
+
+                    <button id="btn-connect" disabled class="bg-gray-800 text-gray-400 font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2 cursor-not-allowed">
                         <i class="fa-brands fa-usb"></i> Connect via ADB
                     </button>
                     <p id="status-1" class="mt-3 text-sm font-mono text-crdroid hidden">Device connected!</p>
@@ -87,31 +89,23 @@
             <div id="step-2" class="step-inactive border-2 rounded-2xl p-6 bg-cardbg transition-all">
                 <div class="flex items-center gap-4 mb-4">
                     <div class="step-icon w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg transition-colors">2</div>
-                    <h2 class="text-2xl font-bold">Flash Recovery Images</h2>
+                    <h2 class="text-2xl font-bold">Download & Flash Recovery</h2>
                 </div>
                 <div class="pl-14 space-y-4">
-                    <p class="text-gray-400">Select the recovery images you downloaded. The device will automatically reboot to bootloader mode to flash these.</p>
+                    <p class="text-gray-400">We will download the latest recovery images (<code class="text-xs bg-gray-800 px-1 rounded">boot.img</code>, <code class="text-xs bg-gray-800 px-1 rounded">dtbo.img</code>, <code class="text-xs bg-gray-800 px-1 rounded">vendor_boot.img</code>) directly to your browser and flash them to the device.</p>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <label class="block text-sm text-gray-400 mb-1">boot.img</label>
-                            <input type="file" id="file-boot" accept=".img" disabled class="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gray-800 file:text-white hover:file:bg-gray-700 disabled:opacity-50">
-                        </div>
-                        <div>
-                            <label class="block text-sm text-gray-400 mb-1">dtbo.img</label>
-                            <input type="file" id="file-dtbo" accept=".img" disabled class="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gray-800 file:text-white hover:file:bg-gray-700 disabled:opacity-50">
-                        </div>
-                        <div>
-                            <label class="block text-sm text-gray-400 mb-1">vendor_boot.img</label>
-                            <input type="file" id="file-vendor-boot" accept=".img" disabled class="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gray-800 file:text-white hover:file:bg-gray-700 disabled:opacity-50">
-                        </div>
-                    </div>
-
-                    <button id="btn-flash-recovery" disabled class="mt-4 bg-gray-800 text-gray-400 font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2 cursor-not-allowed">
-                        <i class="fa-solid fa-bolt"></i> Flash Images
+                    <button id="btn-flash-recovery" class="bg-crdroid hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-download"></i> Download & Flash Recovery
                     </button>
-                    <div id="progress-2" class="w-full bg-gray-800 rounded-full h-2 mt-4 hidden">
-                        <div class="bg-crdroid h-2 rounded-full w-1/3 transition-all duration-500"></div>
+                    
+                    <div id="progress-container-2" class="hidden space-y-2 mt-4">
+                        <div class="flex justify-between text-xs text-gray-400">
+                            <span id="dl-status-2">Downloading images...</span>
+                            <span id="dl-percent-2">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-800 rounded-full h-2">
+                            <div id="dl-bar-2" class="bg-blue-500 h-2 rounded-full w-0 transition-all duration-300"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -120,26 +114,29 @@
             <div id="step-3" class="step-inactive border-2 rounded-2xl p-6 bg-cardbg transition-all">
                 <div class="flex items-center gap-4 mb-4">
                     <div class="step-icon w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg transition-colors">3</div>
-                    <h2 class="text-2xl font-bold">Sideload crDroid</h2>
+                    <h2 class="text-2xl font-bold">Download & Sideload crDroid</h2>
                 </div>
                 <div class="pl-14">
                     <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-800 mb-4 text-sm">
                         <ol class="list-decimal pl-4 space-y-2 text-gray-300">
                             <li>On your phone, use volume keys to select <strong>Recovery Mode</strong> and press Power.</li>
                             <li>Once in crDroid Recovery, tap <strong>Apply update</strong> -> <strong>Apply from ADB</strong>.</li>
-                            <li>Select your crDroid ROM `.zip` below and click Sideload.</li>
+                            <li>Click the button below to stream the latest ROM directly to your device.</li>
                         </ol>
                     </div>
 
-                    <input type="file" id="file-rom" accept=".zip" disabled class="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gray-800 file:text-white hover:file:bg-gray-700 disabled:opacity-50 mb-4">
-                    
-                    <button id="btn-sideload" disabled class="bg-gray-800 text-gray-400 font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2 cursor-not-allowed">
-                        <i class="fa-solid fa-upload"></i> Sideload ROM
+                    <button id="btn-sideload" class="bg-crdroid hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-upload"></i> Download & Sideload ROM
                     </button>
                     
-                    <div id="progress-3" class="w-full bg-gray-800 rounded-full h-4 mt-4 hidden overflow-hidden border border-gray-700 relative">
-                        <div class="bg-crdroid h-4 w-0 transition-all duration-300 absolute left-0 top-0" id="sideload-bar"></div>
-                        <span class="absolute w-full text-center text-xs font-mono font-bold leading-4 z-10" id="sideload-text" style="text-shadow: 0px 1px 2px rgba(0,0,0,0.8);">0%</span>
+                    <div id="progress-container-3" class="hidden space-y-2 mt-4">
+                        <div class="flex justify-between text-xs text-gray-400">
+                            <span id="dl-status-3">Fetching ROM...</span>
+                            <span id="dl-percent-3">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-800 rounded-full h-4 overflow-hidden border border-gray-700 relative">
+                            <div id="dl-bar-3" class="bg-crdroid h-4 w-0 transition-all duration-300 absolute left-0 top-0"></div>
+                        </div>
                     </div>
                 </div>
             </div>

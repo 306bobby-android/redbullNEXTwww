@@ -32,16 +32,17 @@ The goal of this project is to create a modern, user-friendly, and highly functi
 ### 4. Web Flasher UI & Foundation
 *   Designed a clean, step-by-step Web Flasher interface (`flasher.html`).
 *   Implemented the WebUSB device request prompt (`navigator.usb.requestDevice`) in `flasher.js` targeting Android devices (Vendor ID `0x18d1`).
-*   Created the state machine and UI logic for:
-    *   Connecting the device via USB.
-    *   Selecting downloaded `boot.img`, `dtbo.img`, and `vendor_boot.img` files.
-    *   Selecting the downloaded ROM `.zip` file for ADB sideloading.
-*   Built progress bars, status indicators, and instructional text for the user.
+*   Created the state machine and UI logic for a direct-download architecture:
+    *   Connecting the device via USB after selecting the target model.
+    *   Dynamically fetching the OTA JSON for the target device.
+    *   Displaying progress bars for the in-browser download and flashing of `boot`, `dtbo`, and `vendor_boot`.
+    *   Displaying progress bars for the in-browser streaming and sideloading of the crDroid `.zip`.
 
 ---
 
 ## 🚧 Next Steps / Pending Work
 *   **Web Flasher Core Integration:** Integrate a library like `@yume-chan/adb` (Tango) to replace the simulated flashing steps in `flasher.js` with actual WebUSB ADB and Fastboot binary commands:
+    *   Implement `fetch()` streams to download the images and ROM directly from SourceForge (handling any potential CORS errors if they arise by potentially setting up a proxy/mirror).
     *   Command to reboot the device to bootloader via ADB.
     *   Commands to flash `boot`, `dtbo`, and `vendor_boot` partitions via Fastboot.
     *   Command to stream the 1.4GB+ ROM `.zip` via ADB Sideload using JS Streams (to avoid RAM limitations).
