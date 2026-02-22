@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (selectedDevice) {
             btnConnect.disabled = false;
             btnConnect.classList.remove('bg-gray-800', 'text-gray-400', 'cursor-not-allowed');
-            btnConnect.classList.add('bg-crdroid', 'hover:bg-green-600', 'text-white');
+            btnConnect.classList.add('bg-brand', 'hover:opacity-80', 'text-white');
         }
     });
 
@@ -62,18 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Fetch JSON Data for the device
             status1.classList.remove('hidden');
-            status1.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin text-crdroid"></i> Fetching latest release info...`;
+            status1.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin text-brand"></i> Fetching latest release info...`;
             
             const response = await fetch(`${baseUrl}/${selectedDevice}.json`);
             if (!response.ok) throw new Error('Failed to fetch device JSON');
             const data = await response.json();
             deviceData = data.response[0];
 
-            status1.innerHTML = `<i class="fa-solid fa-check-circle text-crdroid"></i> Connected to ${usbDevice.manufacturerName} ${usbDevice.productName} - Found v${deviceData.version}`;
+            status1.innerHTML = `<i class="fa-solid fa-check-circle text-brand"></i> Connected to ${usbDevice.manufacturerName} ${usbDevice.productName} - Found v${deviceData.version}`;
             
             btnConnect.disabled = true;
             btnConnect.classList.add('bg-gray-800', 'text-gray-400', 'cursor-not-allowed');
-            btnConnect.classList.remove('bg-crdroid', 'hover:bg-green-600', 'text-white');
+            btnConnect.classList.remove('bg-brand', 'hover:opacity-80', 'text-white');
             deviceSelect.disabled = true;
 
             // Move to Step 2
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnFlashRecovery.addEventListener('click', async () => {
         btnFlashRecovery.disabled = true;
         btnFlashRecovery.classList.add('bg-gray-800', 'text-gray-400', 'cursor-not-allowed');
-        btnFlashRecovery.classList.remove('bg-crdroid', 'hover:bg-green-600', 'text-white');
+        btnFlashRecovery.classList.remove('bg-brand', 'hover:opacity-80', 'text-white');
         progressContainer2.classList.remove('hidden');
         
         try {
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Flashing Simulation
             dlStatus2.innerText = "Flashing images to device...";
             dlBar2.classList.remove('bg-blue-500');
-            dlBar2.classList.add('bg-crdroid');
+            dlBar2.classList.add('bg-brand');
             dlBar2.style.width = '100%';
             dlPercent2.innerText = "";
             
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnSideload.addEventListener('click', async () => {
         btnSideload.disabled = true;
         btnSideload.classList.add('bg-gray-800', 'text-gray-400', 'cursor-not-allowed');
-        btnSideload.classList.remove('bg-crdroid', 'hover:bg-green-600', 'text-white');
+        btnSideload.classList.remove('bg-brand', 'hover:opacity-80', 'text-white');
         progressContainer3.classList.remove('hidden');
 
         try {
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             await simulateDownload(`Sideloading...`, dlBar3, dlPercent3, dlStatus3);
 
             dlStatus3.innerText = "Sideload Complete! Please select 'Reboot system now' on your device.";
-            dlStatus3.classList.add('text-crdroid', 'font-bold');
+            dlStatus3.classList.add('text-brand', 'font-bold');
 
             step3.classList.remove('step-active');
             step3.classList.add('step-done');

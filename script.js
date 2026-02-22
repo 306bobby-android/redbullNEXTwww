@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
     devices.forEach(device => {
         const cardHtml = `
             <div class="device-card bg-cardbg rounded-2xl p-8 border border-gray-800 flex flex-col items-center text-center group cursor-pointer" onclick="openModal('${device.id}', '${device.name}')">
-                <div class="w-20 h-20 rounded-full bg-gray-900 flex items-center justify-center mb-6 group-hover:bg-crdroid/20 transition-colors border border-gray-800">
-                    <i class="fa-solid ${device.icon} text-4xl text-gray-400 group-hover:text-crdroid transition-colors"></i>
+                <div class="w-20 h-20 rounded-full bg-gray-900 flex items-center justify-center mb-6 group-hover:bg-brand/20 transition-colors border border-gray-800">
+                    <i class="fa-solid ${device.icon} text-4xl text-gray-400 group-hover:text-brand transition-colors"></i>
                 </div>
                 <h3 class="text-2xl font-bold mb-2 text-white">${device.name}</h3>
-                <p class="text-crdroid font-mono mb-6">${device.id}</p>
+                <p class="text-brand font-mono mb-6">${device.id}</p>
                 <button class="w-full bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-xl transition-colors border border-gray-700 flex items-center justify-center gap-2 mt-auto">
                     <i class="fa-solid fa-circle-info"></i> View Details
                 </button>
@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const titleEl = document.getElementById('modal-title');
         const bodyEl = document.getElementById('modal-body');
         
-        titleEl.innerHTML = `<i class="fa-solid fa-mobile-screen text-crdroid mr-2"></i> ${deviceName} <span class="text-sm font-mono text-gray-500 ml-2">(${deviceId})</span>`;
-        bodyEl.innerHTML = `<div class="flex justify-center py-10"><i class="fa-solid fa-circle-notch fa-spin text-4xl text-crdroid"></i></div>`;
+        titleEl.innerHTML = `<i class="fa-solid fa-mobile-screen text-brand mr-2"></i> ${deviceName} <span class="text-sm font-mono text-gray-500 ml-2">(${deviceId})</span>`;
+        bodyEl.innerHTML = `<div class="flex justify-center py-10"><i class="fa-solid fa-circle-notch fa-spin text-4xl text-brand"></i></div>`;
         
         // Show modal
         modal.classList.remove('opacity-0', 'pointer-events-none');
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div>
                         <p class="text-sm text-gray-500 mb-1">Build Date</p>
-                        <p class="font-medium text-white"><i class="fa-regular fa-calendar-days text-crdroid mr-2"></i>${date}</p>
+                        <p class="font-medium text-white"><i class="fa-regular fa-calendar-days text-brand mr-2"></i>${date}</p>
                     </div>
                     <div>
                         <p class="text-sm text-gray-500 mb-1">File Size</p>
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div>
                         <p class="text-sm text-gray-500 mb-1">Maintainer</p>
-                        <p class="font-medium text-white"><i class="fa-solid fa-user-gear text-crdroid mr-2"></i>${buildInfo.maintainer}</p>
+                        <p class="font-medium text-white"><i class="fa-solid fa-user-gear text-brand mr-2"></i>${buildInfo.maintainer}</p>
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                    <a href="${buildInfo.download}" class="bg-crdroid hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl transition-colors flex items-center justify-center gap-3 shadow-lg shadow-green-900/50 text-center col-span-1 md:col-span-2">
+                    <a href="${buildInfo.download}" class="bg-brand hover:opacity-80 text-white font-bold py-4 px-6 rounded-xl transition-colors flex items-center justify-center gap-3 shadow-lg shadow-brand-900/50 text-center col-span-1 md:col-span-2">
                         <i class="fa-solid fa-download text-xl"></i> Download ROM
                     </a>
                     
