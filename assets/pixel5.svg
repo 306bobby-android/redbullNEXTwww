@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 620" width="100%" height="100%">
+  <defs>
+    <radialGradient id="lensGrad5v2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3b3b3b"/>
+      <stop offset="60%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="10" y="10" width="280" height="600" rx="40" ry="40" fill="#9db5a9" stroke="#87a194" stroke-width="2"/>
+
+  <rect x="30" y="30" width="90" height="90" rx="24" ry="24" fill="#151515" />
+  <circle cx="54" cy="75" r="14" fill="url(#lensGrad5v2)" stroke="#262626" stroke-width="1.5"/>
+  <circle cx="96" cy="75" r="14" fill="url(#lensGrad5v2)" stroke="#262626" stroke-width="1.5"/>
+  <circle cx="75" cy="48" r="6" fill="#fefecb"/> <circle cx="75" cy="100" r="3" fill="#2a2a2a"/> <circle cx="150" cy="190" r="22" fill="#8ea69a" stroke="#849c90" stroke-width="2"/>
+
+  <text x="150" y="400" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="#4f6358" text-anchor="middle" opacity="0.85">5</text>
+
+  <g transform="translate(142, 530) scale(0.8)">
+      <path d="M20,0 h-12 v-6 h18 c0,10 -8,18 -18,18 c-10,0 -18,-8 -18,-18 c0,-10 8,-18 18,-18 c4.5,0 8.5,1.6 11.6,4.4 l-4.6,4.6 c-1.8,-1.5 -4.2,-2.6 -7,-2.6 c-6,0 -11,5 -11,11 c0,6 5,11 11,11 c4.8,0 8.8,-3 10.3,-7 z" fill="#6d8376"/>
+  </g>
+</svg>

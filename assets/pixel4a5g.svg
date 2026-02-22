@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 650" width="100%" height="100%">
+  <defs>
+    <radialGradient id="lensGrad4a5gv2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3b3b3b"/>
+      <stop offset="60%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="10" y="10" width="290" height="630" rx="42" ry="42" fill="#2d2d2d" stroke="#1f1f1f" stroke-width="2"/>
+
+  <rect x="35" y="35" width="92" height="92" rx="22" ry="22" fill="#000000" />
+  <circle cx="60" cy="80" r="14" fill="url(#lensGrad4a5gv2)" stroke="#262626" stroke-width="1.5"/>
+  <circle cx="102" cy="80" r="14" fill="url(#lensGrad4a5gv2)" stroke="#262626" stroke-width="1.5"/>
+  <circle cx="81" cy="52" r="6" fill="#fefecb"/>
+  <circle cx="81" cy="106" r="3" fill="#2a2a2a"/>
+
+  <circle cx="155" cy="185" r="23" fill="#262626" stroke="#1c1c1c" stroke-width="2"/>
+
+  <text x="155" y="390" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#c0c0c0" text-anchor="middle" opacity="0.85">4a 5G</text>
+
+  <g transform="translate(147, 560) scale(0.8)">
+      <path d="M20,0 h-12 v-6 h18 c0,10 -8,18 -18,18 c-10,0 -18,-8 -18,-18 c0,-10 8,-18 18,-18 c4.5,0 8.5,1.6 11.6,4.4 l-4.6,4.6 c-1.8,-1.5 -4.2,-2.6 -7,-2.6 c-6,0 -11,5 -11,11 c0,6 5,11 11,11 c4.8,0 8.8,-3 10.3,-7 z" fill="#b0b0b0"/>
+  </g>
+
+  <rect x="300" y="150" width="4" height="40" rx="1" fill="#f0f0f0" />
+</svg>

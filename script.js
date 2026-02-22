@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const baseUrl = 'https://raw.githubusercontent.com/crdroidandroid/android_vendor_crDroidOTA/16.0';
     
     const devices = [
-        { id: 'bramble', name: 'Pixel 4a 5G', icon: 'fa-mobile' },
-        { id: 'redfin', name: 'Pixel 5', icon: 'fa-mobile-screen' },
-        { id: 'barbet', name: 'Pixel 5a', icon: 'fa-mobile-button' }
+        { id: 'bramble', name: 'Pixel 4a 5G', image: 'assets/pixel4a5g.svg' },
+        { id: 'redfin', name: 'Pixel 5', image: 'assets/pixel5.svg' },
+        { id: 'barbet', name: 'Pixel 5a', image: 'assets/pixel5a.svg' }
     ];
 
     const container = document.getElementById('device-container');
@@ -17,8 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     devices.forEach(device => {
         const cardHtml = `
             <div class="device-card bg-cardbg rounded-2xl p-8 border border-gray-800 flex flex-col items-center text-center group cursor-pointer" onclick="openModal('${device.id}', '${device.name}')">
-                <div class="w-20 h-20 rounded-full bg-gray-900 flex items-center justify-center mb-6 group-hover:bg-brand/20 transition-colors border border-gray-800">
-                    <i class="fa-solid ${device.icon} text-4xl text-gray-400 group-hover:text-brand transition-colors"></i>
+                <div class="w-32 h-32 rounded-3xl bg-gray-900 flex items-center justify-center mb-6 group-hover:bg-brand/10 transition-colors border border-gray-800 p-2 overflow-hidden relative">
+                    <div class="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <img src="${device.image}" alt="${device.name}" class="h-[110%] w-[110%] object-contain opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 relative z-10 drop-shadow-lg">
                 </div>
                 <h3 class="text-2xl font-bold mb-2 text-white">${device.name}</h3>
                 <p class="text-brand font-mono mb-6">${device.id}</p>
