@@ -102,8 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <i class="fa-solid fa-download text-xl"></i> Download ROM
                     </a>
                     
-                    <a href="${buildInfo.recovery}" class="bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-4 rounded-xl transition-colors flex items-center justify-center gap-2 border border-gray-700">
-                        <i class="fa-solid fa-life-ring"></i> Get Recovery
+                    <a href="${buildInfo.download.substring(0, buildInfo.download.lastIndexOf(buildInfo.filename))}" class="bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-4 rounded-xl transition-colors flex items-center justify-center gap-2 border border-gray-700">
+                        <i class="fa-solid fa-folder-open"></i> Other Files
                     </a>
                     <a href="${buildInfo.forum}" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-4 rounded-xl transition-colors flex items-center justify-center gap-2 border border-gray-700">
                         <i class="fa-brands fa-discourse"></i> XDA Thread
