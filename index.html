@@ -32,12 +32,22 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .bg-gradient-rainbow {
+            background: linear-gradient(90deg, #e84118, #fbc531, #4cd137, #0abde3);
+            background-size: 200% 200%;
+            animation: gradient-shift 3s ease infinite;
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
         .device-card {
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
         .device-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(56, 178, 89, 0.4);
+            box-shadow: 0 10px 25px -5px rgba(10, 189, 227, 0.4);
         }
         .modal {
             transition: opacity 0.25s ease;
@@ -77,7 +87,7 @@
                 Maintained for Google Pixel 4a 5G (bramble), 5 (redfin), and 5a (barbet).
             </p>
             <div class="flex justify-center gap-4 flex-wrap">
-                <a href="#devices" class="bg-brand hover:opacity-80 text-white font-bold py-3 px-8 rounded-full transition-colors flex items-center gap-2 shadow-lg shadow-brand-900/50">
+                <a href="#devices" class="bg-gradient-rainbow hover:opacity-90 text-white font-bold py-3 px-8 rounded-full transition-opacity flex items-center gap-2 shadow-lg shadow-brand/20 border-0">
                     <i class="fa-solid fa-download"></i> Download Latest
                 </a>
                 <a href="https://t.me/crdroid_redbull" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-full transition-colors flex items-center gap-2 border border-gray-700">

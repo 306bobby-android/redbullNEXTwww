@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             btnConnect.disabled = true;
             btnConnect.classList.add('bg-gray-800', 'text-gray-400', 'cursor-not-allowed');
-            btnConnect.classList.remove('bg-brand', 'hover:opacity-80', 'text-white');
+            btnConnect.classList.remove('bg-gradient-rainbow', 'hover:opacity-90', 'text-white', 'border-0');
             deviceSelect.disabled = true;
 
             // Move to Step 2
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnFlashRecovery.addEventListener('click', async () => {
         btnFlashRecovery.disabled = true;
         btnFlashRecovery.classList.add('bg-gray-800', 'text-gray-400', 'cursor-not-allowed');
-        btnFlashRecovery.classList.remove('bg-brand', 'hover:opacity-80', 'text-white');
+        btnFlashRecovery.classList.remove('bg-gradient-rainbow', 'hover:opacity-90', 'text-white', 'border-0');
         progressContainer2.classList.remove('hidden');
         
         try {
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Flashing Simulation
             dlStatus2.innerText = "Flashing images to device...";
             dlBar2.classList.remove('bg-blue-500');
-            dlBar2.classList.add('bg-brand');
+            dlBar2.classList.add('bg-gradient-rainbow');
             dlBar2.style.width = '100%';
             dlPercent2.innerText = "";
             
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnSideload.addEventListener('click', async () => {
         btnSideload.disabled = true;
         btnSideload.classList.add('bg-gray-800', 'text-gray-400', 'cursor-not-allowed');
-        btnSideload.classList.remove('bg-brand', 'hover:opacity-80', 'text-white');
+        btnSideload.classList.remove('bg-gradient-rainbow', 'hover:opacity-90', 'text-white', 'border-0');
         progressContainer3.classList.remove('hidden');
 
         try {

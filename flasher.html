@@ -12,7 +12,7 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: '#38b259',
+                        brand: '#0abde3',
                         darkbg: '#121212',
                         cardbg: '#1e1e1e'
                     }
@@ -26,12 +26,12 @@
             color: #ffffff;
             font-family: 'Inter', sans-serif;
         }
-        .step-active { border-color: #38b259; }
-        .step-active .step-icon { background-color: #38b259; color: #fff; }
+        .step-active { border-color: #0abde3; }
+        .step-active .step-icon { background-color: #0abde3; color: #fff; }
         .step-inactive { border-color: #374151; opacity: 0.6; pointer-events: none; }
         .step-inactive .step-icon { background-color: #374151; color: #9ca3af; }
-        .step-done { border-color: #38b259; }
-        .step-done .step-icon { background-color: #166534; color: #38b259; border: 1px solid #38b259; }
+        .step-done { border-color: #0abde3; }
+        .step-done .step-icon { background-color: #0c4a6e; color: #0abde3; border: 1px solid #0abde3; }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
@@ -102,7 +102,7 @@
                 <div class="pl-14 space-y-4">
                     <p class="text-gray-400">We will download the latest recovery images (<code class="text-xs bg-gray-800 px-1 rounded">boot.img</code>, <code class="text-xs bg-gray-800 px-1 rounded">dtbo.img</code>, <code class="text-xs bg-gray-800 px-1 rounded">vendor_boot.img</code>) directly to your browser and flash them to the device.</p>
                     
-                    <button id="btn-flash-recovery" class="bg-brand hover:opacity-80 text-white font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
+                    <button id="btn-flash-recovery" class="bg-gradient-rainbow hover:opacity-90 text-white font-bold py-3 px-6 rounded-xl transition-opacity flex items-center gap-2 border-0">
                         <i class="fa-solid fa-download"></i> Download & Flash Recovery
                     </button>
                     
@@ -133,7 +133,7 @@
                         </ol>
                     </div>
 
-                    <button id="btn-sideload" class="bg-brand hover:opacity-80 text-white font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
+                    <button id="btn-sideload" class="bg-gradient-rainbow hover:opacity-90 text-white font-bold py-3 px-6 rounded-xl transition-opacity flex items-center gap-2 border-0">
                         <i class="fa-solid fa-upload"></i> Download & Sideload ROM
                     </button>
                     
@@ -143,7 +143,7 @@
                             <span id="dl-percent-3">0%</span>
                         </div>
                         <div class="w-full bg-gray-800 rounded-full h-4 overflow-hidden border border-gray-700 relative">
-                            <div id="dl-bar-3" class="bg-brand h-4 w-0 transition-all duration-300 absolute left-0 top-0"></div>
+                            <div id="dl-bar-3" class="bg-gradient-rainbow h-4 w-0 transition-all duration-300 absolute left-0 top-0"></div>
                         </div>
                     </div>
                 </div>

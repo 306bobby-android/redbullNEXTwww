@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                    <a href="${buildInfo.download}" class="bg-brand hover:opacity-80 text-white font-bold py-4 px-6 rounded-xl transition-colors flex items-center justify-center gap-3 shadow-lg shadow-brand-900/50 text-center col-span-1 md:col-span-2">
+                    <a href="${buildInfo.download}" class="bg-gradient-rainbow hover:opacity-90 text-white font-bold py-4 px-6 rounded-xl transition-opacity flex items-center justify-center gap-3 shadow-lg shadow-brand/20 text-center col-span-1 md:col-span-2 border-0">
                         <i class="fa-solid fa-download text-xl"></i> Download ROM
                     </a>
                     
