@@ -6,7 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnConnect = document.getElementById('btn-connect');
     const status1 = document.getElementById('status-1');
     const step1 = document.getElementById('step-1');
+    const browserWarning = document.getElementById('browser-warning');
+    const flasherSteps = document.getElementById('flasher-steps');
     
+    // Browser Compatibility Check
+    if (!navigator.usb) {
+        browserWarning.classList.remove('hidden');
+        flasherSteps.classList.add('opacity-50', 'pointer-events-none');
+        deviceSelect.disabled = true;
+        btnConnect.disabled = true;
+        return; // Stop further execution
+    }
+
     const step2 = document.getElementById('step-2');
     const btnFlashRecovery = document.getElementById('btn-flash-recovery');
     const progressContainer2 = document.getElementById('progress-container-2');
